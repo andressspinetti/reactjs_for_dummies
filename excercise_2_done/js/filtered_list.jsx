@@ -13,7 +13,6 @@ var List = React.createClass({
   }
 });
 
-
 // Component 2
 var FilteredList = React.createClass({
   filterList: function(event){
@@ -39,13 +38,13 @@ var FilteredList = React.createClass({
      }
   },
   componentWillMount: function(){
-    // Add the initial items into items list
+    this.setState({items: this.state.initialItems})
   },
   render: function(){
     return (
       <div className="filter-list">
         <input type="text" placeholder="Search" onChange={this.filterList}/>
-        // Place the proper component here //
+        <List items={this.state.items}/>
       </div>
     );
   }

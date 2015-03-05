@@ -1,20 +1,18 @@
 /** @jsx React.DOM */
 var TodoList = React.createClass({
   createItem: function(itemText) {
-      // Create and return one item with itemText as the information that we added in the input, Remember to set the handle delete in each element
+      return <li>{itemText} [<a href="#" onClick={this.props.handleDelete.bind(this, itemText)}>x</a>]</li>;
   },
 
   render: function() {
-    return <ul>/*create a list of items using props.items*/</ul>;
+    return <ul>{this.props.items.map(this.createItem)}</ul>;
   }
 });
 
 var TodoApp = React.createClass({
-
   getInitialState: function() {
-    return {items: [], text: ''}; // We starts with no items
+    return {items: [], text: ''};
   },
-  // Event that deletes a specific item
   handleDelete: function(itemToDelete, e) {
     var newItems = _.reject(this.state.items, function(item) {
         return item == itemToDelete
@@ -32,7 +30,14 @@ var TodoApp = React.createClass({
   },
   render: function() {
     return (
-      // Render the proper element
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} handleDelete={this.handleDelete} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} value={this.state.text} />
+          <button>{'Add #' + (this.state.items.length + 1)}</button>
+        </form>
+      </div>
     );
   }
 });

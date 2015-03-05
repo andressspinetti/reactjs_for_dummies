@@ -1,23 +1,19 @@
 /** @jsx React.DOM */
 
+// tips
+// Remember that you can use setState to change the values of the properties/atributes of your components inside events for example
+
 var Counter = React.createClass({
   incrementCount: function(){
-    this.setState({
-      count: this.state.count + 1
-    });
+    // Do something!
   },
   getInitialState: function(){
      return {
-       count: 0
+       // Set your initial values
      }
   },
   render: function(){
-    return (
-      <div className="counter">
-        <h1>{this.state.count}</h1>
-        <button type="button" onClick={this.incrementCount}>Increment</button>
-      </div>
-    );
+    //Render your elements in to the DOM
   }
 });
 
