@@ -1,0 +1,4 @@
+- You can use one component for the whole app and another one to manage and render
+the list
+
+- You can use lodash reject to remove elements from a list, eg: _.reject(items,function(a){return a == b})
